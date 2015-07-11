@@ -288,7 +288,7 @@ func (this *UploadFileResponse) unmarshal(data []byte) error {
 		return err
 	}
 	remoteFilename := string(data[len(data)-buff.Len():])
-	this.RemoteFileId = this.GroupName + string(os.PathSeparator) + remoteFilename
+	this.RemoteFileId = this.GroupName + "/" + remoteFilename
 	return nil
 }
 
