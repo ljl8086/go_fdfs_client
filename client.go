@@ -181,7 +181,7 @@ func (this *FdfsClient) UploadSlaveByFilename(filename, remoteFileId, prefixName
 }
 
 func (this *FdfsClient) UploadSlaveByBuffer(filebuffer []byte,  masterFilename, prefixName, fileExtName string) (*UploadFileResponse, error) {
-	tmp, err := splitRemoteFileId(masterFilename)
+	tmp, err := splitRemoteFileId(masterFilename)  
 	if err != nil || len(tmp) != 2 {
 		return nil, err
 	}
