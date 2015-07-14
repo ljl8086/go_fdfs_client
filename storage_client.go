@@ -47,12 +47,13 @@ func (this *StorageClient) storageUploadSlaveByFilename(tc *TrackerClient,
 		STORAGE_PROTO_CMD_UPLOAD_SLAVE_FILE, remoteFileId, prefixName, fileExtName)
 }
 
+//sunny 修改，增加参数
 func (this *StorageClient) storageUploadSlaveByBuffer(tc *TrackerClient,
-	storeServ *StorageServer, fileBuffer []byte, remoteFileId string, fileExtName string) (*UploadFileResponse, error) {
+	storeServ *StorageServer, fileBuffer []byte, masterFilename string, prefixName string, fileExtName string) (*UploadFileResponse, error) {
 	bufferSize := len(fileBuffer)
 
 	return this.storageUploadFile(tc, storeServ, fileBuffer, int64(bufferSize), FDFS_UPLOAD_BY_BUFFER,
-		STORAGE_PROTO_CMD_UPLOAD_SLAVE_FILE, "", remoteFileId, fileExtName)
+		STORAGE_PROTO_CMD_UPLOAD_SLAVE_FILE, masterFilename, prefixName, fileExtName)
 }
 
 func (this *StorageClient) storageUploadAppenderByFilename(tc *TrackerClient,

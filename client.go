@@ -180,8 +180,8 @@ func (this *FdfsClient) UploadSlaveByFilename(filename, remoteFileId, prefixName
 	return store.storageUploadSlaveByFilename(tc, storeServ, filename, prefixName, remoteFilename)
 }
 
-func (this *FdfsClient) UploadSlaveByBuffer(filebuffer []byte, remoteFileId, fileExtName string) (*UploadFileResponse, error) {
-	tmp, err := splitRemoteFileId(remoteFileId)
+func (this *FdfsClient) UploadSlaveByBuffer(filebuffer []byte,  masterFilename, prefixName, fileExtName string) (*UploadFileResponse, error) {
+	tmp, err := splitRemoteFileId(masterFilename)
 	if err != nil || len(tmp) != 2 {
 		return nil, err
 	}
@@ -197,7 +197,7 @@ func (this *FdfsClient) UploadSlaveByBuffer(filebuffer []byte, remoteFileId, fil
 	storagePool, err := this.getStoragePool(storeServ.ipAddr, storeServ.port)
 	store := &StorageClient{storagePool}
 
-	return store.storageUploadSlaveByBuffer(tc, storeServ, filebuffer, remoteFilename, fileExtName)
+	return store.storageUploadSlaveByBuffer(tc, storeServ, filebuffer,  masterFilename, prefixName, fileExtName)
 }
 
 func (this *FdfsClient) UploadAppenderByFilename(filename string) (*UploadFileResponse, error) {
