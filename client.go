@@ -197,7 +197,7 @@ func (this *FdfsClient) UploadSlaveByBuffer(filebuffer []byte,  masterFilename, 
 	storagePool, err := this.getStoragePool(storeServ.ipAddr, storeServ.port)
 	store := &StorageClient{storagePool}
 
-	return store.storageUploadSlaveByBuffer(tc, storeServ, filebuffer,  masterFilename, prefixName, fileExtName)
+	return store.storageUploadSlaveByBuffer(tc, storeServ, filebuffer,  remoteFilename, prefixName, fileExtName)
 }
 
 func (this *FdfsClient) UploadAppenderByFilename(filename string) (*UploadFileResponse, error) {
